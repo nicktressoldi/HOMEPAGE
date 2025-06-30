@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="padding">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique de Moda: ElegantWear</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #86149d;
+            --secondary: #bb56d9;
+            --bg: #f5deff;
+            --text: #3b1a4f;
+            --accent: #a400fc;
+            --white: #fff;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 7vw 18px 7vw;
+            background: var(--white);
+            box-shadow: 0 2px 8px #0001;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+        .menu {
+            display: flex;
+            gap: 22px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 8px 22px;
+            border-radius: 22px;
+            border: 2px solid var(--primary);
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .menu a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        /* Banner */
+        .banner {
+            height: 500px;
+            background: url("2painel.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 7vw;
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .banner-content {
+            background: rgba(255,255,255,0.85);
+            padding: 32px 38px;
+            border-radius: 18px;
+            max-width: 420px;
+            box-shadow: 0 4px 24px #0002;
+        }
+        .banner-content h1 {
+            font-size: 2.3rem;
+            margin: 0 0 12px 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        .banner-content p {
+            font-size: 1.15rem;
+            margin: 0 0 18px 0;
+            color: var(--text);
+        }
+        .banner-content button {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .banner-content button:hover {
+            background: var(--primary);
+        }
+        /* Coleções */
+        .colecoes-section {
+            padding: 32px 7vw 0 7vw;
+        }
+        .colecoes-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        .colecoes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+        .colecao {
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #0001;
+            padding: 24px 0 16px 0;
+            text-align: center;
+            transition: transform 0.15s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .colecao:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 24px #7f5af033;
+        }
+        .colecao img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 3px solid var(--primary);
+        }
+        .colecao span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 6px;
+        }
+        /* Lookbook */
+        .lookbook-section {
+            padding: 38px 7vw 0 7vw;
+        }
+        .lookbook-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+        .lookbook-gallery {
+            column-count: 3;
+            column-gap: 18px;
+        }
+        .lookbook-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 10px #0001;
+            overflow: hidden;
+            break-inside: avoid;
+            transition: box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .lookbook-item img {
+            width: 100%;
+            display: block;
+            border-radius: 16px 16px 0 0;
+        }
+        .lookbook-caption {
+            padding: 12px 14px;
+            font-size: 1rem;
+            color: var(--text);
+        }
+        /* Destaques */
+        .destaques-section {
+            padding: 38px 7vw 0 7vw;
+        }
+        .destaques-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .destaques-grid {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+        .destaque {
+            flex: 1 1 180px;
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 22px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 10px #f7b80122;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+        }
+        .destaque i {
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+        /* Rodapé */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 38px 7vw 18px 7vw;
+            margin-top: 48px;
+            border-radius: 32px 32px 0 0;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 38px;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+        .footer-section {
+            flex: 1 1 220px;
+        }
+        .footer-section h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .footer-section ul li {
+            margin-bottom: 7px;
+        }
+        .footer-section a {
+            color: var(--white);
+            text-decoration: underline;
+            font-size: 1rem;
+        }
+        .newsletter-form input[type="email"] {
+            padding: 8px 12px;
+            border-radius: 18px;
+            border: none;
+            margin-right: 8px;
+            font-size: 1rem;
+            width: 60%;
+            max-width: 180px;
+        }
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 18px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .newsletter-form button:hover {
+            background: var(--accent);
+        }
+        .footer-copy {
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .colecoes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .lookbook-gallery {
+                column-count: 2;
+            }
+            .destaques-grid {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 18px;
+            }
+        }
+        @media (max-width: 600px) {
+            .header, .banner, .colecoes-section, .lookbook-section, .destaques-section, .footer {
+                padding-left: 4vw;
+                padding-right: 4vw;
+            }
+            .banner {
+                height: 200px;
+                padding-left: 4vw;
+            }
+            .banner-content {
+                padding: 18px 12px;
+                max-width: 95vw;
+            }
+            .colecoes-grid {
+                grid-template-columns: 1fr;
+            }
+            .lookbook-gallery {
+                column-count: 1;
+            }
+        }
+    </style>
+    <!-- Icons (Font Awesome CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">ElegantWear</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Coleções</a>
+            <a href="#">Lookbook</a>
+            <a href="#">Contato</a>
+        </div>
+    </div>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <h1>Nova Coleção Verão 2025</h1>
+            <p>Descubra tendências frescas, cores vibrantes e looks para todos os estilos. Vista-se de atitude!</p>
+            <button>Ver Coleção</button>
+        </div>
+    </div>
+    <!-- Coleções -->
+    <div class="colecoes-section">
+        <div class="colecoes-title">Coleções</div>
+        <div class="colecoes-grid">
+            <div class="colecao">
+                <img src="vestido.jpg" alt="Vestidos">
+                <span>Vestidos</span>
+            </div>
+            <div class="colecao">
+                <img src="T-shirt.jpg" alt="T-Shirts">
+                <span>T-Shirts</span>
+            </div>
+            <div class="colecao">
+                <img src="jeans.jpg" alt="Jeans">
+                <span>Jeans</span>
+            </div>
+            <div class="colecao">
+                <img src="acessorio.jpg" alt="Acessórios">
+                <span>Acessórios</span>
+            </div>
+            <div class="colecao">
+                <img src="calçados.jpg" alt="Calçados">
+                <span>Calçados</span>
+            </div>
+            <div class="colecao">
+                <img src="bolsa.jpg" alt="Bolsas">
+                <span>Bolsas</span>
+            </div>
+        </div>
+    </div>
+    <!-- Lookbook -->
+    <div class="lookbook-section">
+        <div class="lookbook-title">Lookbook</div>
+        <div class="lookbook-gallery">
+            <div class="lookbook-item">
+                <img src="look1 casual.jpg" alt="Look 1" style="height:220px;">
+                <div class="lookbook-caption">Look casual para o dia a dia</div>
+            </div>
+            <div class="lookbook-item">
+                <img src="look2 urbano.jpg" alt="Look 2" style="height:320px;">
+                <div class="lookbook-caption">Estilo urbano com atitude</div>
+            </div>
+            <div class="lookbook-item">
+                <img src="look3 acessorios.jpg" alt="Look 3" style="height:180px;">
+                <div class="lookbook-caption">Acessórios que transformam</div>
+            </div>
+            <div class="lookbook-item">
+                <img src="look4 jeans.jpg" alt="Look 4" style="height:260px;">
+                <div class="lookbook-caption">Jeans para todas as ocasiões</div>
+            </div>
+            <div class="lookbook-item">
+                <img src="look5 mixcores.jpg" alt="Look 5" style="height:200px;">
+                <div class="lookbook-caption">Mix de cores vibrantes</div>
+            </div>
+            <div class="lookbook-item">
+                <img src="look6 noite.jpg" alt="Look 6" style="height:300px;">
+                <div class="lookbook-caption">Looks para arrasar à noite</div>
+            </div>
+        </div>
+    </div>
+    <!-- Destaques -->
+    <div class="destaques-section">
+        <div class="destaques-title">Destaques</div>
+        <div class="destaques-grid">
+            <div class="destaque">
+                <i class="fa-solid fa-truck-fast"></i>
+                Frete Grátis acima de R$199
+            </div>
+            <div class="destaque">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                1ª Troca Grátis
+            </div>
+            <div class="destaque">
+                <i class="fa-solid fa-credit-card"></i>
+                Até 6x sem juros
+            </div>
+            <div class="destaque">
+                <i class="fa-solid fa-star"></i>
+                Novidades toda semana
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> contato@elegantwear.com</li>
+                    <li><i class="fa-solid fa-phone"></i> (51) 99999-8888</li>
+                    <li><i class="fa-brands fa-instagram"></i> @elegantwear</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Políticas</h4>
+                <ul>
+                    <li><a href="#">Política de Troca</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <button type="submit">Assinar</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-copy">
+            &copy; 2025 ElegantWear. Todos os direitos reservados.
+        </div>
+    </div>
+</body>
+</html>
